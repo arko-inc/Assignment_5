@@ -4,8 +4,7 @@ const taskList = document.getElementById('taskList');
 const totalDisplay = document.getElementById('total');
 const completedDisplay = document.getElementById('completed');
 const pendingDisplay = document.getElementById('pending');
-
-// learned from brocode local stroage
+const saveBtn = document.getElementById('saveBtn');
 
 function loadTasks() {
     const storedTasks = localStorage.getItem('tasks');
@@ -14,7 +13,9 @@ function loadTasks() {
     }
 }
 
-// event create korlam 
+function saveTasks() {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
 
 function updateStats() {
     const total = tasks.length;
@@ -29,22 +30,23 @@ function renderTasks() {
     tasks.forEach((task, index) => {
         const taskItem = document.createElement('div');
         taskItem.className = 'grid grid-cols-7 items-center';
+
         taskItem.innerHTML = `
-        <span>${index + 1}</span>
-        <span class="col-span-2">${task.name}</span>
-        <span>${task.date}</span>
-        <span>
-            <input type="checkbox" ${task.completed ? 'checked' : ''} onclick="toggleStatus(${index})">
-        </span>
-        <span class="text-red-500 cursor-pointer" onclick="deleteTask(${index})">🗑️</span>
-        <span class="text-blue-500 cursor-pointer" onclick="editTask(${index})">✏️</span>
-    `;
-      
+            <span>${index + 1}</span>
+            <span class="col-span-2">${task.name}</span>
+            <span>${task.date}</span>
+            <span>
+                <input type="checkbox" ${task.completed ? 'checked' : ''} onclick="toggleStatus(${index})">
+            </span>
+            <span class="text-red-500 cursor-pointer" onclick="deleteTask(${index})">🗑️</span>
+            <span class="text-blue-500 cursor-pointer" onclick="editTask(${index})">✏️</span>
+        `;
         taskList.appendChild(taskItem);
     });
     updateStats();
 }
 
+// Add a task
 function addTask() {
     const taskName = taskInput.value.trim();
     if (taskName !== '') {
@@ -54,10 +56,11 @@ function addTask() {
             completed: false
         });
         taskInput.value = '';
-        saveTasks(); 
+        saveTasks();  
         renderTasks();
     }
 }
+
 
 function deleteTask(index) {
     tasks.splice(index, 1);
@@ -80,8 +83,8 @@ function toggleStatus(index) {
     renderTasks();
 }
 
-saveBtn.addEventListener('click', addTask);
 
+saveBtn.addEventListener('click', addTask);
 
 taskInput.addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
@@ -90,5 +93,5 @@ taskInput.addEventListener('keypress', function(event) {
 });
 
 
-loadTasks();  
+loadTasks(); 
 renderTasks(); 
