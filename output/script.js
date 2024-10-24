@@ -44,3 +44,17 @@ function renderTasks() {
     });
     updateStats();
 }
+
+function addTask() {
+    const taskName = taskInput.value.trim();
+    if (taskName !== '') {
+        tasks.push({
+            name: taskName,
+            date: new Date().toLocaleDateString(),
+            completed: false
+        });
+        taskInput.value = '';
+        saveTasks(); 
+        renderTasks();
+    }
+}
