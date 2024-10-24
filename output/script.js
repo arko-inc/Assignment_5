@@ -73,3 +73,9 @@ function editTask(index) {
         renderTasks();
     }
 }
+
+function toggleStatus(index) {
+    tasks[index].completed = !tasks[index].completed;
+    saveTasks();  
+    renderTasks();
+}
