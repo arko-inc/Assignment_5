@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="output/main.css">
+</head>
+<body class="bg-gray-100 flex justify-center items-center min-h-screen">
+    <div class="bg-white shadow-lg rounded-lg p-6 w-full max-w-3xl">
+
+        <h1 class="text-2xl font-bold text-center mb-4">To-do List</h1>
+
+    
+        <div class="flex justify-between text-gray-600 mb-4">
+            <span id="total">Total: 0</span>
+            <span id="completed">Completed: 0</span>
+            <span id="pending">Pending: 0</span>
+        </div>
+
+        <div class="flex mb-4">
+            <input id="taskInput" class="w-full border-b-2 border-gray-300 focus:outline-none focus:border-blue-500 p-2" type="text" placeholder="Add your task">
+            <button id="saveBtn" class="ml-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Save</button>
+        </div>
+
+        <div class="grid grid-cols-7 text-gray-700 font-bold mb-2">
+            <span>#</span>
+            <span class="col-span-2">Task</span>
+            <span>Date</span>
+            <span>Status</span>
+            <span>Delete</span>
+            <span>Edit</span>
+        </div>
+
+        <div id="taskList" class="space-y-2"></div>
+    </div>
+
+
+    <script src="output/script.js"></script>
+</body>
+</html>
