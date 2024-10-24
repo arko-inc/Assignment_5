@@ -13,3 +13,13 @@ function loadTasks() {
         tasks = JSON.parse(storedTasks);
     }
 }
+
+// event create korlam 
+
+function updateStats() {
+    const total = tasks.length;
+    const completed = tasks.filter(task => task.completed).length;
+    totalDisplay.textContent = `Total: ${total}`;
+    completedDisplay.textContent = `Completed: ${completed}`;
+    pendingDisplay.textContent = `Pending: ${total - completed}`;
+}
