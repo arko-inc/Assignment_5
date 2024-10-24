@@ -64,3 +64,12 @@ function deleteTask(index) {
     saveTasks();  
     renderTasks();
 }
+
+function editTask(index) {
+    const newTaskName = prompt('Edit task:', tasks[index].name);
+    if (newTaskName) {
+        tasks[index].name = newTaskName;
+        saveTasks();  
+        renderTasks();
+    }
+}
