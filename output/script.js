@@ -29,7 +29,16 @@ function renderTasks() {
     tasks.forEach((task, index) => {
         const taskItem = document.createElement('div');
         taskItem.className = 'grid grid-cols-7 items-center';
-
+        taskItem.innerHTML = `
+        <span>${index + 1}</span>
+        <span class="col-span-2">${task.name}</span>
+        <span>${task.date}</span>
+        <span>
+            <input type="checkbox" ${task.completed ? 'checked' : ''} onclick="toggleStatus(${index})">
+        </span>
+        <span class="text-red-500 cursor-pointer" onclick="deleteTask(${index})">🗑️</span>
+        <span class="text-blue-500 cursor-pointer" onclick="editTask(${index})">✏️</span>
+    `;
       
         taskList.appendChild(taskItem);
     });
