@@ -58,3 +58,9 @@ function addTask() {
         renderTasks();
     }
 }
+
+function deleteTask(index) {
+    tasks.splice(index, 1);
+    saveTasks();  
+    renderTasks();
+}
