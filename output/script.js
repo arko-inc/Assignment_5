@@ -23,3 +23,15 @@ function updateStats() {
     completedDisplay.textContent = `Completed: ${completed}`;
     pendingDisplay.textContent = `Pending: ${total - completed}`;
 }
+
+function renderTasks() {
+    taskList.innerHTML = '';
+    tasks.forEach((task, index) => {
+        const taskItem = document.createElement('div');
+        taskItem.className = 'grid grid-cols-7 items-center';
+
+      
+        taskList.appendChild(taskItem);
+    });
+    updateStats();
+}
