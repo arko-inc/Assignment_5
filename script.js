@@ -46,7 +46,6 @@ function renderTasks() {
     updateStats();
 }
 
-// Add a task
 function addTask() {
     const taskName = taskInput.value.trim();
     if (taskName !== '') {
@@ -56,15 +55,14 @@ function addTask() {
             completed: false
         });
         taskInput.value = '';
-        saveTasks();  
+        saveTasks();
         renderTasks();
     }
 }
 
-
 function deleteTask(index) {
     tasks.splice(index, 1);
-    saveTasks();  
+    saveTasks();
     renderTasks();
 }
 
@@ -72,17 +70,16 @@ function editTask(index) {
     const newTaskName = prompt('Edit task:', tasks[index].name);
     if (newTaskName) {
         tasks[index].name = newTaskName;
-        saveTasks();  
+        saveTasks();
         renderTasks();
     }
 }
 
 function toggleStatus(index) {
     tasks[index].completed = !tasks[index].completed;
-    saveTasks();  
+    saveTasks();
     renderTasks();
 }
-
 
 saveBtn.addEventListener('click', addTask);
 
@@ -92,6 +89,11 @@ taskInput.addEventListener('keypress', function(event) {
     }
 });
 
+loadTasks();
+renderTasks();
 
-loadTasks(); 
-renderTasks(); 
+window.loadTasks = loadTasks;
+window.deleteTask = deleteTask;
+window.editTask = editTask;
+window.toggleStatus = toggleStatus;
+window.addTask = addTask;
